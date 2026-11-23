@@ -1,0 +1,40 @@
+﻿@model SiphelelePortfolio.Data.Models.Domain.Certificate
+@{
+    Layout = "_AdminLayout";
+    var isEdit = Model.CertificateId > 0;
+    ViewData["Title"] = isEdit ? "Edit Certificate" : "Add Certificate";
+}
+
+<div class="page-header"><h1>@ViewData["Title"]</h1></div>
+
+<form asp-action="@(isEdit ? "CertificateEdit" : "CertificateCreate")" method="post"
+      style="max-width:600px;background:white;padding:24px;border-radius:12px;">
+  @Html.AntiForgeryToken()
+  @if (isEdit) { <input type="hidden" asp-for="CertificateId" /> }
+
+  @if (!ViewData.ModelState.IsValid)
+  {
+    <div class="error-banner">@Html.ValidationSummary(false)</div>
+  }
+
+  <label asp-for="Title">Title</label>
+  <input asp-for="Title" class="input" required maxlength="200" />
+  <span asp-validation-for="Title" class="field-error"></span>
+
+  <label asp-for="IssuingOrganization">Issuing Organization</label>
+  <input asp-for="IssuingOrganization" class="input" required maxlength="150" />
+  <span asp-validation-for="IssuingOrganization" class="field-error"></span>
+
+  <label asp-for="IssueDate">Issue Date</label>
+  <input asp-for="IssueDate" type="date" class="input" required />
+  <span asp-validation-for="IssueDate" class="field-error"></span>
+
+  <label asp-for="CertificateUrl">Certificate URL (PDF or PNG)</label>
+  <input asp-for="CertificateUrl" class="input" placeholder="/images/certs/example.png" maxlength="300" />
+  <span asp-validation-for="CertificateUrl" class="field-error"></span>
+
+  <div style="margin-top:24px;display:flex;gap:12px;">
+    <button type="submit" class="btn-gold">@(isEdit ? "Update" : "Save")</button>
+    <a asp-action="Certificates" class="btn-outline">Cancel</a>
+  </div>
+</form>

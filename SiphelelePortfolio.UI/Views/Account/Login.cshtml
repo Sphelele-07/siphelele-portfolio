@@ -1,0 +1,31 @@
+﻿@model SiphelelePortfolio.Data.Models.ViewModels.LoginVM
+@{
+    ViewData["Title"] = "Manager Login";
+}
+
+<section class="section" style="min-height:80vh;display:flex;align-items:center;">
+  <div class="glass-card" style="max-width:420px;margin:0 auto;width:100%;">
+    <h1 class="text-center">Manager Login</h1>
+    <p class="text-center">Access the admin portal</p>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+      <div class="error-banner">@Html.ValidationSummary(true)</div>
+    }
+
+    <form asp-action="Login" method="post">
+      @Html.AntiForgeryToken()
+      <input type="hidden" asp-for="ReturnUrl" />
+
+      <label asp-for="Username">Email</label>
+      <input asp-for="Username" class="input" type="email" required />
+      <span asp-validation-for="Username" class="field-error"></span>
+
+      <label asp-for="Password">Password</label>
+      <input asp-for="Password" class="input" type="password" data-toggle-password="true" required />
+      <span asp-validation-for="Password" class="field-error"></span>
+
+      <button type="submit" class="btn-gold btn-block">Sign In</button>
+    </form>
+  </div>
+</section>

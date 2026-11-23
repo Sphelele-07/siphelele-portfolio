@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewData["Title"] — Admin</title>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a asp-controller="Admin" asp-action="Index" class="brand">SN. Admin</a>
+    <nav class="admin-nav">
+      <a asp-controller="Admin" asp-action="Index">Dashboard</a>
+      <a asp-controller="Admin" asp-action="Engagements">Engagements</a>
+      <a asp-controller="Admin" asp-action="Collaborations">Collaborations</a>
+      <a asp-controller="Admin" asp-action="Projects">Projects</a>
+      <a asp-controller="Admin" asp-action="Certificates">Certificates</a>
+      <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn-ghost">Logout</button>
+      </form>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    @if (TempData["Success"] is string success)
+    {
+      <div class="success-banner">@success</div>
+    }
+    @if (TempData["Error"] is string error)
+    {
+      <div class="error-banner">@error</div>
+    }
+    @RenderBody()
+  </main>
+
+  <partial name="_ConfirmModal" />
+  <script src="~/js/confirm-modal.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

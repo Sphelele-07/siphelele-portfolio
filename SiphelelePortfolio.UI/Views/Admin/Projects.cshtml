@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SiphelelePortfolio.Data.Models.Domain.Project>
+@{ Layout = "_AdminLayout"; ViewData["Title"] = "Projects"; }
+
+<div class="page-header" style="display:flex;justify-content:space-between;align-items:center;">
+  <h1>Projects</h1>
+  <a asp-action="ProjectCreate" class="btn-gold">+ Add Project</a>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Title</th><th>Type</th><th>Order</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      @if (!Model.Any())
+      {
+        <tr><td colspan="4" style="text-align:center;padding:30px;color:#888;">No projects yet. Click "Add Project" to create one.</td></tr>
+      }
+      @foreach (var p in Model)
+      {
+        <tr>
+          <td><strong>@p.Title</strong></td>
+          <td>@p.Type</td>
+          <td>@p.DisplayOrder</td>
+          <td>
+            <a asp-action="ProjectEdit" asp-route-id="@p.ProjectId" class="btn-action edit">Edit</a>
+            <form asp-action="ProjectDelete" asp-route-id="@p.ProjectId" method="post"
+                  style="display:inline;" data-confirm="Delete this project?">
+              @Html.AntiForgeryToken()
+              <button type="submit" class="btn-action approve" style="background:#f8d7da;color:#721c24;">Delete</button>
+            </form>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

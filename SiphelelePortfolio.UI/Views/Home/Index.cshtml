@@ -1,0 +1,320 @@
+﻿@model SiphelelePortfolio.Data.Models.ViewModels.HomeVM
+@{
+    ViewData["Title"] = "Siphelele Ndzundzu | Full-Stack Developer";
+}
+
+<!-- ═══════════════════════════════════════════════════════════════
+     1. HERO
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Hello, I'm <br><span>Siphelele Ndzundzu</span></h1>
+        <h2>Full-Stack Developer</h2>
+        <p>I build modern, secure and scalable web applications using .NET, C# and modern technologies.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn-gold">View My Projects</a>
+            <a asp-controller="Collaboration" asp-action="Index" class="btn-outline">Let's Collaborate</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="~/images/Sphelele_Corporate.png" alt="Siphelele Ndzundzu" />
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     2. ABOUT
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="glass-card">
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="~/images/Sphelele_Grad.png" alt="Siphelele Graduation" />
+            </div>
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>
+                    I'm a <strong>Software Development Graduate</strong> based in Cape Town with hands-on experience
+                    across technical support, customer operations, and business systems. My approach to building
+                    software starts with understanding the problem — not the code. I design solutions that are
+                    <strong>practical, secure, and built for the people who use them</strong>.
+                </p>
+                <p>
+                    I work primarily with <strong>C#, ASP.NET Core MVC, SQL Server, and Dapper</strong>, and I
+                    complement my development skills with formal training in <strong>
+                    Software Testing & Systems
+                    Analysis
+                </strong>. That means I don't just ship features — I validate them, document them, and
+                make sure they hold up under real-world use.
+            </p>
+            <p>
+                I'm currently building a growing portfolio of production-style applications, including
+                <strong>Mouzie Guest House</strong> (a full-stack booking system with automated invoicing) and
+                <strong>Merrydale Pharmacy</strong> (a pharmacy management platform with real-time stock
+                control). Every project is deployed, tested, and documented — not just a GitHub commit.
+            </p>
+
+            <h3 style="margin-top: 24px; font-size: 18px; color: var(--powder-blue); font-family: 'Segoe UI', sans-serif;">
+                What I bring
+            </h3>
+            <ul class="about-list">
+                <li>🎓 <strong>Diploma in Software Development</strong> — Nelson Mandela University</li>
+                <li>🎓 <strong>TSIBA Business School</strong> — Software Testing & Systems Analysis Work Readiness</li>
+                <li>💻 <strong>2 production-grade projects</strong> deployed and documented</li>
+                <li>🔒 Focus on secure, tested, and maintainable code</li>
+                <li>📍 Based in Cape Town, South Africa</li>
+                <li>💼 <strong>Open to Work</strong> — Junior Dev, QA, Technical Support, Systems Admin</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     3. WORK EXPERIENCE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="section-title">
+        <h2>Work Experience</h2>
+        <p>Where I've built my professional foundation.</p>
+    </div>
+    <div class="experience-grid">
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h3>Customer Service &amp; Systems Support Assistant</h3>
+                    <span class="experience-company">Bingo Royale Goldrush</span>
+                </div>
+                <span class="experience-period"></span>
+            </div>
+            <p>Hardware/software troubleshooting, incident management, ticketing systems, and escalation handling. Maintained and supported 9 business-critical systems across the operation.</p>
+            <div class="experience-systems">
+                <strong>Systems used:</strong> CMS, Float, Vault, Isitaki, DRGT, GAAP, Bingo Slots IGT, Operational Shift Roster System, Data Capturing Systems
+            </div>
+        </div>
+
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h3>Collections Agent</h3>
+                    <span class="experience-company">Tenacity Financial Services</span>
+                </div>
+                <span class="experience-period"></span>
+            </div>
+            <p>Account management, billing dispute resolution, regulatory compliance, and accurate record keeping. Operated 4 financial systems daily.</p>
+            <div class="experience-systems">
+                <strong>Systems used:</strong> Presence, Einstein, Inovo, Alchemy
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     4. SYSTEMS I'VE WORKED WITH — Two Tiles
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="section-title">
+        <h2>Systems I've Worked With</h2>
+        <p>Enterprise systems I've supported, maintained, and operated in production environments.</p>
+    </div>
+
+    <div class="systems-tiles">
+
+        <!-- BINGO TILE -->
+        <div class="system-tile">
+            <div class="system-tile-header">
+                <h3>Bingo Royale Goldrush</h3>
+                <span class="system-tile-role">Customer Service & Systems Support</span>
+            </div>
+            <ul class="system-list">
+                <li>
+                    <strong>CMS</strong>
+                    <span>Content management</span>
+                </li>
+                <li>
+                    <strong>Float</strong>
+                    <span>Issuing and receiving float</span>
+                </li>
+                <li>
+                    <strong>Vault</strong>
+                    <span>Employee management</span>
+                </li>
+                <li>
+                    <strong>Isitaki</strong>
+                    <span>Credit card transaction operations, transaction history</span>
+                </li>
+                <li>
+                    <strong>DRGT</strong>
+                    <span>Punter records, Bingo machine maintenance, employee shift records</span>
+                </li>
+                <li>
+                    <strong>GAAP</strong>
+                    <span>Inventory management</span>
+                </li>
+                <li>
+                    <strong>Bingo Slots IGT</strong>
+                    <span>Technical support & component maintenance</span>
+                </li>
+                <li>
+                    <strong>Operational Shift Roster</strong>
+                    <span>Maintenance and updates</span>
+                </li>
+                <li>
+                    <strong>Data Capturing Systems</strong>
+                    <span>Entry, validation, and accuracy checks</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- TENACITY TILE -->
+        <div class="system-tile">
+            <div class="system-tile-header">
+                <h3>Tenacity Financial Services</h3>
+                <span class="system-tile-role">Collections Consultant</span>
+            </div>
+            <ul class="system-list">
+                <li>
+                    <strong>Presence</strong>
+                    <span>Employee call records</span>
+                </li>
+                <li>
+                    <strong>Einstein</strong>
+                    <span>Customer database and information retrieval</span>
+                </li>
+                <li>
+                    <strong>Inovo</strong>
+                    <span>Dialer operations</span>
+                </li>
+                <li>
+                    <strong>Alchemy</strong>
+                    <span>Debit order records</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════
+     5. TECHNICAL SKILLS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="section-title">
+        <h2>Technical Skills</h2>
+        <p>The stack I build with every day.</p>
+    </div>
+    <div class="skills-grid">
+        @foreach (var group in Model.TechnicalSkills)
+        {
+            <div class="skill-group">
+                <h4>@group.Category</h4>
+                <div class="tags">
+                    @foreach (var item in group.Items)
+                    {
+                        <span class="tag">@item</span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     6. TSIBA COURSEWORK
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="section-title">
+        <h2>Formal Training — TSIBA Business School</h2>
+        <p>Software Testing & Systems Analysis Work Readiness Programme.</p>
+    </div>
+    <div class="coursework-grid">
+        @foreach (var module in Model.Coursework)
+        {
+            <div class="course-card">
+                <span class="course-code">@module.Code</span>
+                <h4>@module.Title</h4>
+                <p>@module.Covered</p>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     7. CERTIFICATIONS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="section-title">
+        <h2>Certifications</h2>
+        <p>Industry-recognised qualifications.</p>
+    </div>
+    <div class="projects-grid">
+        @foreach (var cert in Model.Certificates)
+        {
+            <div class="glass-card" style="padding:24px;">
+                <h3 style="color:var(--powder-blue);font-size:18px;font-family:'Segoe UI',sans-serif;">@cert.Title</h3>
+                <p style="color:var(--text-secondary);font-size:13px;">@cert.IssuingOrganization</p>
+                <p style="color:var(--text-muted);font-size:12px;">Issued: @cert.IssueDate.ToString("dd MMM yyyy")</p>
+                @if (!string.IsNullOrEmpty(cert.CertificateUrl))
+                {
+                    <a href="@cert.CertificateUrl" class="btn-outline btn-sm" style="margin-top:12px;">View Certificate</a>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     8. PROJECTS
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="projects" class="section">
+    <div class="section-title">
+        <h2>My Projects</h2>
+        <p>A showcase of my recent work.</p>
+    </div>
+    <div class="projects-grid">
+        @foreach (var p in Model.Projects)
+        {
+            var hasDemo = !string.IsNullOrWhiteSpace(p.DemoVideoUrl)
+                          && !p.DemoVideoUrl.Contains("YOUR_", StringComparison.OrdinalIgnoreCase);
+
+            <div class="project-card">
+                <img src="@p.ImagePath" alt="@p.Title" class="project-img"
+                     onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
+                <div class="project-info">
+                    <h3>@p.Title</h3>
+                    <h4>@p.Type</h4>
+                    <p>@p.Solution</p>
+                    <div class="project-tags">
+                        @foreach (var tag in p.Tags.Split(','))
+                        {
+                            <span>@tag.Trim()</span>
+                        }
+                    </div>
+                    <div class="project-actions">
+                        @if (hasDemo)
+                        {
+                            <a href="@p.DemoVideoUrl" class="btn-outline btn-sm"
+                               onclick="logEngagement('ClickDemoVideo', @p.ProjectId, '@p.Title')">🎥 Live Demo</a>
+                        }
+                        else
+                        {
+                            <span class="btn-outline btn-sm disabled">🎥 Coming Soon</span>
+                        }
+                        <a href="@p.LiveUrl" class="btn-gold btn-sm"
+                           onclick="logEngagement('ClickTestYourself', @p.ProjectId, '@p.Title')">🧪 Test Yourself</a>
+                        <a href="/api/project/download-requirements/@p.ProjectId" class="btn-outline btn-sm">📄 Requirements</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     9. LET'S COLLABORATE CTA
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section section-cta">
+    <div class="glass-card text-center">
+        <h2>Let's Build Something Great Together</h2>
+        <p style="margin-bottom: 24px;">Have a project in mind? Let's talk.</p>
+        <a asp-controller="Collaboration" asp-action="Index" class="btn-gold btn-lg">Let's Collaborate</a>
+    </div>
+</section>

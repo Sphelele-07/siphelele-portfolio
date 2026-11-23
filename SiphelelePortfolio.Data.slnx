@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SiphelelePortfolio.Data/SiphelelePortfolio.Data.csproj" />
+  <Project Path="SiphelelePortfolio.UI/SiphelelePortfolio.UI.csproj" Id="603858c3-ddcd-49b4-945b-fd53330764f8" />
+</Solution>

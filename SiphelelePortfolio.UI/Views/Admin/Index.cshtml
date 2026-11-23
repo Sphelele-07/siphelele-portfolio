@@ -1,0 +1,62 @@
+﻿@model SiphelelePortfolio.Data.Models.ViewModels.AdminDashboardVM
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Dashboard";
+    var period = ViewData["CurrentPeriod"]?.ToString() ?? "6months";
+}
+
+<div class="page-header"><h1>Dashboard</h1></div>
+
+<div class="dashboard-grid">
+  <div class="counter-card">
+    <h3>@Model.TotalEngagements</h3>
+    <p>Total Engagements</p>
+  </div>
+  <div class="counter-card">
+    <h3>@Model.TotalCollaborations</h3>
+    <p>Total Collaborations</p>
+  </div>
+  <div class="counter-card" style="border-left:4px solid #c0392b;">
+    <h3 style="color:#c0392b;">@Model.UnreadCollaborations</h3>
+    <p>Unread Messages</p>
+  </div>
+</div>
+
+<div class="table-wrap" style="padding:20px;margin-bottom:32px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+    <h3 style="color:#1e3a2f;">Engagement vs Collaborations</h3>
+    <form method="get" asp-action="Index">
+      <select name="period" onchange="this.form.submit()" style="padding:6px 12px;border-radius:6px;border:1px solid #ddd;">
+        <option value="3months"  selected="@(period == "3months")">Last 3 Months</option>
+        <option value="6months"  selected="@(period == "6months")">Last 6 Months</option>
+        <option value="12months" selected="@(period == "12months")">Last 12 Months</option>
+      </select>
+    </form>
+  </div>
+  <canvas id="engagementChart" style="width:100%;max-height:300px;"></canvas>
+</div>
+
+@section Scripts {
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ChartLabels));
+    const engagements = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.EngagementData));
+    const collabs = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CollaborationData));
+
+    new Chart(document.getElementById('engagementChart'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'Engagements', data: engagements,
+            borderColor: '#b8942e', backgroundColor: 'rgba(184,148,46,0.1)',
+            fill: true, tension: 0.4 },
+          { label: 'Collaborations', data: collabs,
+            borderColor: '#2e7d32', backgroundColor: 'rgba(46,125,50,0.1)',
+            fill: true, tension: 0.4 }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+  </script>
+}

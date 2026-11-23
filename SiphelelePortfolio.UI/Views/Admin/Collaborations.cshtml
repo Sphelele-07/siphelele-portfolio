@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SiphelelePortfolio.Data.Models.Domain.Collaboration>
+@{ Layout = "_AdminLayout"; ViewData["Title"] = "Collaborations"; }
+
+<div class="page-header"><h1>Collaboration Inbox</h1></div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Date</th><th>From</th><th>Subject</th><th>Status</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      @if (!Model.Any())
+      {
+        <tr><td colspan="5" style="text-align:center;padding:30px;color:#888;">No collaborations yet.</td></tr>
+      }
+      @foreach (var c in Model)
+      {
+        <tr>
+          <td>@c.CreatedAt.ToString("dd MMM yyyy HH:mm")</td>
+          <td>@c.FullName<br/><small>@c.Email</small></td>
+          <td>@c.Subject</td>
+          <td><span class="status-badge @(c.Status == "New" ? "status-pending" : "")">@c.Status</span></td>
+          <td>
+            @if (c.Status == "New")
+            {
+              <form asp-action="MarkRead" method="post" style="display:inline;">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@c.CollaborationId" />
+                <button type="submit" class="btn-action approve">Mark Read</button>
+              </form>
+            }
+            <a href="mailto:@c.Email?subject=Re: @c.Subject" class="btn-action edit">Reply</a>
+          </td>
+        </tr>
+        <tr><td colspan="5" style="background:#f8f9fa;font-size:13px;color:#555;"><strong>Message:</strong> @c.Message</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

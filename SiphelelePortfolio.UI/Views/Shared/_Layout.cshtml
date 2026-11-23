@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewData["Title"]</title>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+  <header class="site-header">
+    <a asp-controller="Home" asp-action="Index" class="brand">SN.</a>
+    <nav class="site-nav">
+      <a asp-controller="Home" asp-action="Index">Home</a>
+      <a asp-controller="Collaboration" asp-action="Index">Let's Collaborate</a>
+      <a asp-controller="Account" asp-action="Login" class="nav-admin">Manager</a>
+    </nav>
+  </header>
+
+  <main>@RenderBody()</main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Siphelele Ndzundzu</h3>
+        <p>Full-Stack Developer</p>
+        <p>Cape Town, South Africa</p>
+      </div>
+            <div class="footer-links">
+                <a href="mailto:mshini473@gmail.com">Email</a>
+                <a href="https://wa.me/27794835008">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/siphelele-ndzundzu-7b37b2292">LinkedIn</a>
+            </div>
+      <div class="footer-cta">
+        <a asp-controller="Collaboration" asp-action="Index" class="btn-gold">Let's Collaborate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; @DateTime.Now.Year Siphelele Ndzundzu. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="~/js/password-toggle.js" asp-append-version="true"></script>
+  <script src="~/js/password-strength.js" asp-append-version="true"></script>
+  <script src="~/js/confirm-modal.js" asp-append-version="true"></script>
+  <script src="~/js/engagement-logger.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@model SiphelelePortfolio.Data.Models.Domain.Project
+@{
+    Layout = "_AdminLayout";
+    var isEdit = Model.ProjectId > 0;
+    ViewData["Title"] = isEdit ? "Edit Project" : "Add Project";
+}
+
+<div class="page-header"><h1>@ViewData["Title"]</h1></div>
+
+<form asp-action="@(isEdit ? "ProjectEdit" : "ProjectCreate")" method="post"
+      style="max-width:750px;background:white;padding:24px;border-radius:12px;">
+  @Html.AntiForgeryToken()
+  @if (isEdit) { <input type="hidden" asp-for="ProjectId" /> }
+
+  @if (!ViewData.ModelState.IsValid)
+  {
+    <div class="error-banner">@Html.ValidationSummary(false)</div>
+  }
+
+  <label asp-for="Title">Title</label>
+  <input asp-for="Title" class="input" required maxlength="100" />
+  <span asp-validation-for="Title" class="field-error"></span>
+
+  <label asp-for="Type">Type</label>
+  <input asp-for="Type" class="input" required maxlength="100" />
+  <span asp-validation-for="Type" class="field-error"></span>
+
+  <label asp-for="ImagePath">Thumbnail Image Path</label>
+  <input asp-for="ImagePath" class="input" required placeholder="/images/mouzie-thumb.png" maxlength="200" />
+  <span asp-validation-for="ImagePath" class="field-error"></span>
+
+  <label asp-for="Tags">Tech Stack Tags (comma separated)</label>
+  <input asp-for="Tags" class="input" required placeholder=".NET 8, SQL Server, QuestPDF" maxlength="300" />
+  <span asp-validation-for="Tags" class="field-error"></span>
+
+  <label asp-for="Problem">Problem Statement</label>
+  <textarea asp-for="Problem" class="input" rows="2" required maxlength="500"></textarea>
+  <span asp-validation-for="Problem" class="field-error"></span>
+
+  <label asp-for="Solution">Solution</label>
+  <textarea asp-for="Solution" class="input" rows="2" required maxlength="500"></textarea>
+  <span asp-validation-for="Solution" class="field-error"></span>
+
+  <label asp-for="Result">Result</label>
+  <textarea asp-for="Result" class="input" rows="2" required maxlength="500"></textarea>
+  <span asp-validation-for="Result" class="field-error"></span>
+
+  <label asp-for="DemoVideoUrl">Demo Video URL (leave blank for "Coming Soon")</label>
+  <input asp-for="DemoVideoUrl" class="input" placeholder="https://www.youtube.com/embed/... or /videos/demo.mp4" maxlength="300" />
+  <span asp-validation-for="DemoVideoUrl" class="field-error"></span>
+
+  <label asp-for="LiveUrl">Live URL (Test Yourself)</label>
+  <input asp-for="LiveUrl" class="input" placeholder="https://mouzie.runasp.net" maxlength="300" />
+  <span asp-validation-for="LiveUrl" class="field-error"></span>
+
+  <label asp-for="RequirementsPdfPath">Requirements PDF Path</label>
+  <input asp-for="RequirementsPdfPath" class="input" placeholder="/pdfs/Mouzie-Requirements.pdf" maxlength="300" />
+  <span asp-validation-for="RequirementsPdfPath" class="field-error"></span>
+
+  <label asp-for="DisplayOrder">Display Order (0 = top)</label>
+  <input asp-for="DisplayOrder" type="number" class="input" min="0" max="100" />
+  <span asp-validation-for="DisplayOrder" class="field-error"></span>
+
+  <div style="margin-top:24px;display:flex;gap:12px;">
+    <button type="submit" class="btn-gold">@(isEdit ? "Update" : "Save")</button>
+    <a asp-action="Projects" class="btn-outline">Cancel</a>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+﻿@model SiphelelePortfolio.Data.Models.ViewModels.CollaborationVM
+@{
+    ViewData["Title"] = "Let's Collaborate";
+}
+
+<section class="section">
+  <div class="glass-card" style="max-width:700px;margin:0 auto;">
+    <h1 class="text-center">Let's Collaborate</h1>
+    <p class="text-center">Fill in the form below and I'll get back to you within 24 hours.</p>
+
+    @if (TempData["Success"] is string ok)
+    {
+      <div class="success-banner">@ok</div>
+    }
+
+    <form asp-action="Index" method="post">
+      @Html.AntiForgeryToken()
+
+      <label asp-for="FullName">Full Name</label>
+      <input asp-for="FullName" class="input" required />
+      <span asp-validation-for="FullName" class="field-error"></span>
+
+      <label asp-for="Email">Email Address</label>
+      <input asp-for="Email" class="input" type="email" required />
+      <span asp-validation-for="Email" class="field-error"></span>
+
+      <label asp-for="Subject">Idea / Subject</label>
+      <input asp-for="Subject" class="input" required />
+      <span asp-validation-for="Subject" class="field-error"></span>
+
+      <label asp-for="Message">Message</label>
+      <textarea asp-for="Message" class="input" rows="5" required></textarea>
+      <span asp-validation-for="Message" class="field-error"></span>
+
+      <button type="submit" class="btn-gold btn-block">Send Message</button>
+    </form>
+  </div>
+</section>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
