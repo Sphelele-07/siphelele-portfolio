@@ -275,11 +275,12 @@
         {
             // Force Mouzie to be Coming Soon and use the new image
             var isMouzie = p.Title.Contains("Mouzie", StringComparison.OrdinalIgnoreCase);
-            
+            var isMerrydale = p.Title.Contains("Merrydale", StringComparison.OrdinalIgnoreCase);
+
             // If it's Mouzie, turn off Demo and Live links. Otherwise, check the DB.
             var hasDemo = !isMouzie && !string.IsNullOrWhiteSpace(p.DemoVideoUrl) && !p.DemoVideoUrl.Contains("YOUR_", StringComparison.OrdinalIgnoreCase);
             var hasLiveUrl = !isMouzie && !string.IsNullOrWhiteSpace(p.LiveUrl);
-            
+
             // Swap the image for Mouzie
             var imageSrc = isMouzie ? "/images/mouzie.png" : p.ImagePath;
 
@@ -319,7 +320,15 @@
                             <span class="btn-gold btn-sm disabled" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">🧪 Coming Soon</span>
                         }
 
-                        <a href="/api/project/download-requirements/@p.ProjectId" class="btn-outline btn-sm">📄 Requirements</a>
+                        <!-- Requirements Button -->
+                        @if (isMerrydale)
+                        {
+                            <a href="/Home/DownloadMerrydaleRequirements" class="btn-outline btn-sm">📄 Requirements</a>
+                        }
+                        else
+                        {
+                            <a href="/api/project/download-requirements/@p.ProjectId" class="btn-outline btn-sm">📄 Requirements</a>
+                        }
                     </div>
                 </div>
             </div>

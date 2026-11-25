@@ -105,6 +105,22 @@ public class HomeController : Controller
         return View(vm);
     }
 
+    // ── NEW ACTION TO DOWNLOAD MERRYDALE PDF ────────────────
+    [HttpGet]
+    public IActionResult DownloadMerrydaleRequirements()
+    {
+        // Points directly to the wwwroot folder
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "merrydale-requirements.pdf");
+
+        if (!System.IO.File.Exists(filePath))
+        {
+            return NotFound("The requirements document could not be found.");
+        }
+
+        // Returns the file to download (it will be named Merrydale_Pharmacy_Project_Requirements_Specification.pdf on the user's machine)
+        return PhysicalFile(filePath, "application/pdf", "Merrydale_Pharmacy_Project_Requirements_Specification.pdf");
+    }
+
     public IActionResult Error()
     {
         return View(new SiphelelePortfolio.UI.Models.ErrorViewModel
