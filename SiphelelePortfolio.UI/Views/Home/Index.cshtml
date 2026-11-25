@@ -45,25 +45,26 @@
                     Analysis
                 </strong>. That means I don't just ship features — I validate them, document them, and
                 make sure they hold up under real-world use.
-            </p>
-            <p>
-                I'm currently building a growing portfolio of production-style applications, including
-                <strong>Mouzie Guest House</strong> (a full-stack booking system with automated invoicing) and
-                <strong>Merrydale Pharmacy</strong> (a pharmacy management platform with real-time stock
-                control). Every project is deployed, tested, and documented — not just a GitHub commit.
-            </p>
+                </p>
+                <p>
+                    I'm currently building a growing portfolio of production-style applications, including
+                    <strong>Mouzie Guest House</strong> (a full-stack booking system with automated invoicing) and
+                    <strong>Merrydale Pharmacy</strong> (a pharmacy management platform with real-time stock
+                    control). Every project is deployed, tested, and documented — not just a GitHub commit.
+                </p>
 
-            <h3 style="margin-top: 24px; font-size: 18px; color: var(--powder-blue); font-family: 'Segoe UI', sans-serif;">
-                What I bring
-            </h3>
-            <ul class="about-list">
-                <li>🎓 <strong>Diploma in Software Development</strong> — Nelson Mandela University</li>
-                <li>🎓 <strong>TSIBA Business School</strong> — Software Testing & Systems Analysis Work Readiness</li>
-                <li>💻 <strong>2 production-grade projects</strong> deployed and documented</li>
-                <li>🔒 Focus on secure, tested, and maintainable code</li>
-                <li>📍 Based in Cape Town, South Africa</li>
-                <li>💼 <strong>Open to Work</strong> — Junior Dev, QA, Technical Support, Systems Admin</li>
-            </ul>
+                <h3 style="margin-top: 24px; font-size: 18px; color: var(--powder-blue); font-family: 'Segoe UI', sans-serif;">
+                    What I bring
+                </h3>
+                <ul class="about-list">
+                    <li>🎓 <strong>Diploma in Software Development</strong> — Nelson Mandela University</li>
+                    <li>🎓 <strong>TSIBA Business School</strong> — Software Testing & Systems Analysis Work Readiness</li>
+                    <li>💻 <strong>2 production-grade projects</strong> deployed and documented</li>
+                    <li>🔒 Focus on secure, tested, and maintainable code</li>
+                    <li>📍 Based in Cape Town, South Africa</li>
+                    <li>💼 <strong>Open to Work</strong> — Junior Dev, QA, Technical Support, Systems Admin</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
@@ -272,13 +273,18 @@
     <div class="projects-grid">
         @foreach (var p in Model.Projects)
         {
-            var hasDemo = !string.IsNullOrWhiteSpace(p.DemoVideoUrl)
-                          && !p.DemoVideoUrl.Contains("YOUR_", StringComparison.OrdinalIgnoreCase);
-
-            var hasLiveUrl = !string.IsNullOrWhiteSpace(p.LiveUrl);
+            // Force Mouzie to be Coming Soon and use the new image
+            var isMouzie = p.Title.Contains("Mouzie", StringComparison.OrdinalIgnoreCase);
+            
+            // If it's Mouzie, turn off Demo and Live links. Otherwise, check the DB.
+            var hasDemo = !isMouzie && !string.IsNullOrWhiteSpace(p.DemoVideoUrl) && !p.DemoVideoUrl.Contains("YOUR_", StringComparison.OrdinalIgnoreCase);
+            var hasLiveUrl = !isMouzie && !string.IsNullOrWhiteSpace(p.LiveUrl);
+            
+            // Swap the image for Mouzie
+            var imageSrc = isMouzie ? "/images/mouzie.png" : p.ImagePath;
 
             <div class="project-card">
-                <img src="@p.ImagePath" alt="@p.Title" class="project-img"
+                <img src="@imageSrc" alt="@p.Title" class="project-img"
                      onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
                 <div class="project-info">
                     <h3>@p.Title</h3>
@@ -299,7 +305,7 @@
                         }
                         else
                         {
-                            <span class="btn-outline btn-sm disabled">🎥 Coming Soon</span>
+                            <span class="btn-outline btn-sm disabled" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">🎥 Coming Soon</span>
                         }
 
                         <!-- Test Yourself Button -->
@@ -310,7 +316,7 @@
                         }
                         else
                         {
-                            <span class="btn-gold btn-sm disabled">🧪 Coming Soon</span>
+                            <span class="btn-gold btn-sm disabled" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">🧪 Coming Soon</span>
                         }
 
                         <a href="/api/project/download-requirements/@p.ProjectId" class="btn-outline btn-sm">📄 Requirements</a>
