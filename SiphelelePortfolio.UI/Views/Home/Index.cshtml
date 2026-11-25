@@ -45,28 +45,28 @@
                     Analysis
                 </strong>. That means I don't just ship features — I validate them, document them, and
                 make sure they hold up under real-world use.
-                </p>
-                <p>
-                    I'm currently building a growing portfolio of production-style applications, including
-                    <strong>Mouzie Guest House</strong> (a full-stack booking system with automated invoicing) and
-                    <strong>Merrydale Pharmacy</strong> (a pharmacy management platform with real-time stock
-                    control). Every project is deployed, tested, and documented — not just a GitHub commit.
-                </p>
+            </p>
+            <p>
+                I'm currently building a growing portfolio of production-style applications, including
+                <strong>Mouzie Guest House</strong> (a full-stack booking system with automated invoicing) and
+                <strong>Merrydale Pharmacy</strong> (a pharmacy management platform with real-time stock
+                control). Every project is deployed, tested, and documented — not just a GitHub commit.
+            </p>
 
-                <h3 style="margin-top: 24px; font-size: 18px; color: var(--powder-blue); font-family: 'Segoe UI', sans-serif;">
-                    What I bring
-                </h3>
-                <ul class="about-list">
-                    <li>🎓 <strong>Diploma in Software Development</strong> — Nelson Mandela University</li>
-                    <li>🎓 <strong>TSIBA Business School</strong> — Software Testing & Systems Analysis Work Readiness</li>
-                    <li>💻 <strong>2 production-grade projects</strong> deployed and documented</li>
-                    <li>🔒 Focus on secure, tested, and maintainable code</li>
-                    <li>📍 Based in Cape Town, South Africa</li>
-                    <li>💼 <strong>Open to Work</strong> — Junior Dev, QA, Technical Support, Systems Admin</li>
-                </ul>
-            </div>
+            <h3 style="margin-top: 24px; font-size: 18px; color: var(--powder-blue); font-family: 'Segoe UI', sans-serif;">
+                What I bring
+            </h3>
+            <ul class="about-list">
+                <li>🎓 <strong>Diploma in Software Development</strong> — Nelson Mandela University</li>
+                <li>🎓 <strong>TSIBA Business School</strong> — Software Testing & Systems Analysis Work Readiness</li>
+                <li>💻 <strong>2 production-grade projects</strong> deployed and documented</li>
+                <li>🔒 Focus on secure, tested, and maintainable code</li>
+                <li>📍 Based in Cape Town, South Africa</li>
+                <li>💼 <strong>Open to Work</strong> — Junior Dev, QA, Technical Support, Systems Admin</li>
+            </ul>
         </div>
     </div>
+</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -291,6 +291,18 @@
                     <h3>@p.Title</h3>
                     <h4>@p.Type</h4>
                     <p>@p.Solution</p>
+
+                    <!-- MERRYDALE TEST CREDENTIALS -->
+                    @if (isMerrydale)
+                    {
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); font-size: 13px;">
+                            <p style="margin-bottom: 6px; color: var(--powder-blue); font-weight: 600;">🔑 Test Accounts:</p>
+                            <p style="margin-bottom: 4px;">👤 <strong>Customer:</strong> Register with any real email</p>
+                            <p style="margin-bottom: 4px;">💊 <strong>Pharmacist:</strong> 26511187@tsiba.ac.za | Pharmacist@123</p>
+                            <p style="margin-bottom: 0;">👨‍⚕️ <strong>Doctor:</strong> ghostbond845@gmail.com | Doctor123</p>
+                        </div>
+                    }
+
                     <div class="project-tags">
                         @foreach (var tag in p.Tags.Split(','))
                         {
