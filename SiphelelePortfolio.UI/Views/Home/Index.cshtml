@@ -66,7 +66,6 @@
             </ul>
         </div>
     </div>
-</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -193,6 +192,7 @@
 
     </div>
 </section>
+
 <!-- ═══════════════════════════════════════════════════════════════
      5. TECHNICAL SKILLS
      ═══════════════════════════════════════════════════════════════ -->
@@ -275,6 +275,8 @@
             var hasDemo = !string.IsNullOrWhiteSpace(p.DemoVideoUrl)
                           && !p.DemoVideoUrl.Contains("YOUR_", StringComparison.OrdinalIgnoreCase);
 
+            var hasLiveUrl = !string.IsNullOrWhiteSpace(p.LiveUrl);
+
             <div class="project-card">
                 <img src="@p.ImagePath" alt="@p.Title" class="project-img"
                      onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
@@ -289,6 +291,7 @@
                         }
                     </div>
                     <div class="project-actions">
+                        <!-- Demo Video Button -->
                         @if (hasDemo)
                         {
                             <a href="@p.DemoVideoUrl" class="btn-outline btn-sm"
@@ -298,8 +301,18 @@
                         {
                             <span class="btn-outline btn-sm disabled">🎥 Coming Soon</span>
                         }
-                        <a href="@p.LiveUrl" class="btn-gold btn-sm"
-                           onclick="logEngagement('ClickTestYourself', @p.ProjectId, '@p.Title')">🧪 Test Yourself</a>
+
+                        <!-- Test Yourself Button -->
+                        @if (hasLiveUrl)
+                        {
+                            <a href="@p.LiveUrl" class="btn-gold btn-sm"
+                               onclick="logEngagement('ClickTestYourself', @p.ProjectId, '@p.Title')">🧪 Test Yourself</a>
+                        }
+                        else
+                        {
+                            <span class="btn-gold btn-sm disabled">🧪 Coming Soon</span>
+                        }
+
                         <a href="/api/project/download-requirements/@p.ProjectId" class="btn-outline btn-sm">📄 Requirements</a>
                     </div>
                 </div>
